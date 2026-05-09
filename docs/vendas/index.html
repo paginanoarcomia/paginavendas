@@ -1,1 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WebAI Creator: Curso online para criar páginas web profissionais em minutos usando Inteligência Artificial, sem precisar ser programador. Publique gratuitamente no GitHub Pages.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seusite.com/">
+  <meta property="og:title" content="WebAI Creator - Crie páginas web com IA sem programar">
+  <meta property="og:description" content="Aprenda a criar landing pages profissionais em minutos usando IA. Sem depender de desenvolvedores. Publique grátis no GitHub Pages.">
+  <meta property="og:image" content="[SUBSTITUIR_PELA_IMAGEM_OG.jpg]">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WebAI Creator - Crie páginas web com IA sem programar">
+  <meta name="twitter:description" content="Curso prático: transforme prompts em páginas web profissionais. Sem código complexo, sem mensalidades caras.">
+  <meta name="twitter:image" content="[SUBSTITUIR_PELA_IMAGEM_TWITTER.jpg]">
+  
+  <title>WebAI Creator | Crie Páginas Web com Inteligência Artificial</title>
+  
+  <!-- Favicon inline SVG placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%236366F1' width='100' height='100' rx='20'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='white' font-family='system-ui'>🤖</text></svg>">
+  
+  <style>
+    /* 
+     * ========================================
+     * CONFIGURAÇÕES DE CORES - EDITAR AQUI
+     * ========================================
+     */
+    :root {
+      --color-primary: #6366F1;      /* [COR PRIMÁRIA] */
+      --color-secondary: #8B5CF6;    /* [COR SECUNDÁRIA] */
+      --color-bg: #0F172A;           /* [COR DE FUNDO] */
+      --color-text: #F8FAFC;         /* [COR DO TEXTO] */
+      --color-text-muted: #94A3B8;
+      --color-card-bg: #1E293B;
+      --color-border: #334155;
+      --color-success: #10B981;
+      --color-warning: #F59E0B;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 3rem;
+      --spacing-xl: 4rem;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
 
+    /* Reset e Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-sm);
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 2px solid var(--color-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+    .btn-full { width: 100%; }
+
+    /* Seções */
+    section {
+      padding: var(--spacing-lg) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-title {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--spacing-sm);
+      background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto var(--spacing-lg);
+    }
+
+    /* Hero */
+    .hero {
+      padding: var(--spacing-xl) 0;
+      text-align: center;
+      background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid var(--color-primary);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-sm);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 0 auto var(--spacing-lg);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      justify-content: center;
+      margin-bottom: var(--spacing-md);
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+    .hero-trust svg { width: 20px; height: 20px; color: var(--color-success); }
+
+    /* CTA Aula Gratuita */
+    .cta-free {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      border: 1px solid var(--color-primary);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-md);
+      text-align: center;
+      margin: var(--spacing-lg) auto;
+      max-width: 800px;
+    }
+    .cta-free h3 {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-xs);
+    }
+    .cta-free p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Dores */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .pain-card {
+      background: var(--color-card-bg);
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--color-warning);
+    }
+    .pain-card h4 {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
+    .pain-card h4::before {
+      content: "⚠️";
+      font-size: 1.2rem;
+    }
+
+    /* Solução */
+    .solution {
+      background: rgba(99, 102, 241, 0.05);
+    }
+    .solution-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+    }
+    .solution-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+      text-align: left;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+    .step-number {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* Módulos */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .module-card {
+      background: var(--color-card-bg);
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+    .module-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+    .module-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+    .module-card h4::before {
+      content: "📚";
+    }
+    .module-card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Benefícios */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+    .benefit-item::before {
+      content: "✨";
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Pra quem é / Não é */
+    .audience {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    .audience-card {
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius);
+    }
+    .audience-yes {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--color-success);
+    }
+    .audience-no {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--color-warning);
+    }
+    .audience-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: var(--spacing-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+    .audience-yes h4 { color: var(--color-success); }
+    .audience-no h4 { color: var(--color-warning); }
+    .audience-list li {
+      padding: var(--spacing-xs) 0;
+      padding-left: var(--spacing-sm);
+      border-left: 3px solid currentColor;
+      margin-bottom: var(--spacing-xs);
+      font-size: 0.95rem;
+    }
+
+    /* Depoimentos */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .testimonial-card {
+      background: var(--color-card-bg);
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--color-border);
+    }
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: var(--spacing-sm);
+      position: relative;
+    }
+    .testimonial-text::before {
+      content: """;
+      font-size: 3rem;
+      color: var(--color-primary);
+      opacity: 0.3;
+      position: absolute;
+      top: -10px;
+      left: -5px;
+      line-height: 1;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Bônus */
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .bonus-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius);
+      border: 1px dashed var(--color-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-card::before {
+      content: "🎁";
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+    .bonus-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-xs);
+      padding-right: 2rem;
+    }
+    .bonus-card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Preço/Oferta */
+    .pricing {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2), transparent 70%);
+    }
+    .price-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--color-card-bg);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius);
+      border: 2px solid var(--color-primary);
+      position: relative;
+    }
+    .price-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-warning);
+      color: #0F172A;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .price-original {
+      color: var(--color-text-muted);
+      text-decoration: line-through;
+      font-size: 1.3rem;
+    }
+    .price-current {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      margin: var(--spacing-xs) 0;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .price-installments {
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      margin: var(--spacing-md) 0;
+      font-family: monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-warning);
+    }
+    .countdown span {
+      background: rgba(245, 158, 11, 0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      min-width: 60px;
+    }
+
+    /* Garantia */
+    .guarantee {
+      text-align: center;
+      padding: var(--spacing-md);
+    }
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--color-success);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--border-radius);
+      margin-bottom: var(--spacing-sm);
+    }
+    .guarantee-badge::before {
+      content: "🛡️";
+      font-size: 1.5rem;
+    }
+    .guarantee p {
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--spacing-sm) 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      text-align: left;
+      font-size: 1.1rem;
+    }
+    .faq-question::after {
+      content: "➕";
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+    .faq-item.active .faq-question::after {
+      content: "➖";
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--color-text-muted);
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: var(--spacing-sm);
+    }
+
+    /* CTA Final */
+    .cta-final {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    }
+    .cta-final h2 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: var(--spacing-sm);
+    }
+    .cta-final p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-lg);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Rodapé */
+    footer {
+      padding: var(--spacing-lg) 0;
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--color-border);
+    }
+    footer a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Utilitários */
+    .text-center { text-align: center; }
+    .mb-sm { margin-bottom: var(--spacing-sm); }
+    .mb-md { margin-bottom: var(--spacing-md); }
+    .hidden { display: none; }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .hero-cta { justify-content: center; }
+      .section-title { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container">
+      <span class="hero-badge">🚀 Lançamento Exclusivo</span>
+      <h1>Crie páginas web profissionais em minutos usando IA – sem precisar ser programador</h1>
+      <p>Para empreendedores, freelancers e profissionais que querem criar sites rápidos e profissionais sem precisar codificar do zero</p>
+      
+      <div class="hero-cta">
+        <a href="https://pay.hotmart.com/WEBAI-CREATOR" class="btn btn-primary">🎯 Quero Criar Minha Página Agora</a>
+        <a href="/aula-gratuita.html" class="btn btn-secondary">▶️ Ver Aula Gratuita</a>
+      </div>
+      
+      <div class="hero-trust">
+        <!-- Ícone SVG inline de check -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        <span>Garantia de 7 dias • Acesso imediato • Suporte incluso</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA AULA GRATUITA -->
+  <div class="container">
+    <div class="cta-free">
+      <h3>🎁 Aula Gratuita: Seu Primeiro Site com IA em 15 Minutos</h3>
+      <p>Descubra o método passo a passo que já ajudou +500 alunos a criar páginas profissionais sem escrever uma linha de código.</p>
+      <a href="/aula-gratuita.html" class="btn btn-secondary">Assistir Aula Gratuita Agora →</a>
+    </div>
+  </div>
+
+  <!-- DORES / OBSTÁCULOS -->
+  <section id="dores">
+    <div class="container">
+      <h2 class="section-title">Você se identifica com alguma dessas situações?</h2>
+      <p class="section-subtitle">Se sim, você não está sozinho. Estes são os maiores obstáculos que impedem profissionais talentosos de colocarem suas ideias no ar.</p>
+      
+      <div class="pain-grid">
+        <div class="pain-card">
+          <h4>Não sabe programar</h4>
+          <p>Não sabe programar e teme depender de desenvolvedores caros</p>
+        </div>
+        <div class="pain-card">
+          <h4>Ferramentas complexas</h4>
+          <p>Perde horas tentando configurar ferramentas complexas de criação de sites</p>
+        </div>
+        <div class="pain-card">
+          <h4>Páginas lentas</h4>
+          <p>Tem medo de criar páginas lentas, não responsivas ou mal otimizadas</p>
+        </div>
+        <div class="pain-card">
+          <h4>Ideias sem layout</h4>
+          <p>Não consegue transformar ideias em layouts visuais atraentes</p>
+        </div>
+        <div class="pain-card">
+          <h4>Mensalidades altas</h4>
+          <p>Gasta muito com plataformas de site builder com mensalidades altas</p>
+        </div>
+        <div class="pain-card">
+          <h4>Dificuldade de atualização</h4>
+          <p>Sente dificuldade para manter e atualizar páginas já publicadas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÃO / MÉTODO -->
+  <section class="solution" id="metodo">
+    <div class="container">
+      <h2 class="section-title">Conheça o Método WebAI Creator</h2>
+      <div class="solution-content">
+        <p>O WebAI Creator ensina um método prático em 4 etapas: prompt estratégico, geração guiada por IA, otimização automática e publicação em GitHub Pages. Você aprende a descrever o que precisa, usar ferramentas de IA para gerar o código, ajustar detalhes visuais e colocar sua página no ar – tudo de forma rápida, gratuita e escalável.</p>
+      </div>
+      
+      <div class="solution-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div><strong>Prompt Estratégico:</strong> Aprenda a descrever exatamente o que você precisa</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div><strong>Geração com IA:</strong> Use ferramentas de IA para criar o código base</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div><strong>Otimização:</strong> Ajuste visual, SEO e performance automática</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div><strong>Publicação:</strong> Deploy gratuito e profissional no GitHub Pages</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÓDULOS -->
+  <section id="modulos">
+    <div class="container">
+      <h2 class="section-title">O Que Você Vai Aprender</h2>
+      <p class="section-subtitle">Conteúdo 100% prático, focado em resultados reais desde a primeira aula.</p>
+      
+      <div class="modules-grid">
+        <div class="module-card">
+          <h4>Fundamentos da Criação com IA</h4>
+          <p>Prompts, ferramentas e fluxo de trabalho</p>
+        </div>
+        <div class="module-card">
+          <h4>Geração e Personalização de Código</h4>
+          <p>Do prompt ao HTML/CSS funcional</p>
+        </div>
+        <div class="module-card">
+          <h4>Otimização e Performance</h4>
+          <p>SEO, responsividade e velocidade para GitHub Pages</p>
+        </div>
+        <div class="module-card">
+          <h4>Publicação e Manutenção</h4>
+          <p>Deploy automático, atualizações e boas práticas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" style="background: rgba(99, 102, 241, 0.05);">
+    <div class="container">
+      <h2 class="section-title">Transformações Reais que Você Vai Vivenciar</h2>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item"><p>Crie páginas completas em menos de 30 minutos</p></div>
+        <div class="benefit-item"><p>Reduza custos com desenvolvimento em até 90%</p></div>
+        <div class="benefit-item"><p>Tenha total controle sobre o código gerado, sem depender de plataformas fechadas</p></div>
+        <div class="benefit-item"><p>Publique gratuitamente e com domínio personalizado usando GitHub Pages</p></div>
+        <div class="benefit-item"><p>Atualize suas páginas rapidamente com novos prompts e ajustes simples</p></div>
+        <div class="benefit-item"><p>Ganhe confiança para criar, testar e iterar ideias web sem barreiras técnicas</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRA QUEM É / NÃO É -->
+  <section id="publico">
+    <div class="container">
+      <h2 class="section-title">Este Curso é Para Você?</h2>
+      
+      <div class="audience">
+        <div class="audience-card audience-yes">
+          <h4>✅ Pra quem é</h4>
+          <ul class="audience-list">
+            <li>✓ Empreendedores que precisam de landing pages rápidas para validar ideias</li>
+            <li>✓ Freelancers que querem entregar sites profissionais com mais agilidade</li>
+            <li>✓ Profissionais de marketing que desejam criar páginas de campanha sem depender de TI</li>
+            <li>✓ Estudantes e iniciantes que querem aprender web development com IA de forma prática</li>
+          </ul>
+        </div>
+        
+        <div class="audience-card audience-no">
+          <h4>❌ Não é pra quem</h4>
+          <ul class="audience-list">
+            <li>✗ Desenvolvedores senior que já dominam frameworks complexos e buscam conteúdo avançado de arquitetura</li>
+            <li>✗ Quem espera criar sistemas web completos com backend, banco de dados e autenticação apenas com prompts</li>
+            <li>✗ Pessoas que não querem aprender conceitos básicos de HTML/CSS para fazer ajustes manuais</li>
+            <li>✗ Quem busca soluções 100% automáticas sem nenhum tipo de revisão ou curadoria humana</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" style="background: rgba(99, 102, 241, 0.05);">
+    <div class="container">
+      <h2 class="section-title">Quem Já Criou com o WebAI Creator</h2>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">Criei minha landing page em uma tarde e já capturei 50 leads na primeira semana!</p>
+          <p class="testimonial-author">Mariana Costa</p>
+          <p class="testimonial-role">Consultora de Marketing</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Entrego sites 3x mais rápido para meus clientes e ainda lucro mais com o tempo economizado.</p>
+          <p class="testimonial-author">Rafael Mendes</p>
+          <p class="testimonial-role">Freelancer de Design</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Finalmente coloquei minha ideia no ar sem gastar com desenvolvedor – o curso pagou o investimento no primeiro projeto.</p>
+          <p class="testimonial-author">Juliana Alves</p>
+          <p class="testimonial-role">Empreendedora</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÔNUS -->
+  <section id="bonus">
+    <div class="container">
+      <h2 class="section-title">🎁 Bônus Exclusivos (Por Tempo Limitado)</h2>
+      
+      <!-- Bônus de Conteúdo -->
+      <div style="margin-bottom: var(--spacing-lg);">
+        <h3 style="text-align: center; margin-bottom: var(--spacing-sm);">📚 Bônus de Conteúdo</h3>
+        <div class="bonus-grid">
+          <div class="bonus-card">
+            <h4>Biblioteca de Prompts Prontos</h4>
+            <p>Para Landing Pages, Portfólios e Blogs</p>
+          </div>
+          <div class="bonus-card">
+            <h4>Checklist de Validação</h4>
+            <p>20 pontos para garantir páginas profissionais antes de publicar</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bônus Extras -->
+      <div>
+        <h3 style="text-align: center; margin-bottom: var(--spacing-sm);">🚀 Bônus Extras</h3>
+        <div class="bonus-grid">
+          <div class="bonus-card">
+            <h4>Template Pack WebAI</h4>
+            <p>10 modelos de páginas prontos para personalizar com IA (landing, portfólio, blog, produto)</p>
+          </div>
+          <div class="bonus-card">
+            <h4>Guia Core Web Vitals</h4>
+            <p>Técnicas para garantir notas 90+ no PageSpeed Insights</p>
+          </div>
+          <div class="bonus-card">
+            <h4>Comunidade Discord</h4>
+            <p>Suporte, feedbacks e atualizações sobre novas ferramentas de IA para web</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREÇO / OFERTA -->
+  <section class="pricing" id="oferta">
+    <div class="container">
+      <h2 class="section-title">Invista no Seu Futuro Digital</h2>
+      
+      <div class="price-card">
+        <span class="price-badge">OFERTA POR TEMPO LIMITADO</span>
+        <p class="price-original">De R$497</p>
+        <div class="price-current">R$147</div>
+        <p class="price-installments">ou 12x R$14,90</p>
+        
+        <!-- Countdown Timer 23:59:59 que reinicia a cada 24h -->
+        <div class="countdown" id="countdown">
+          <span id="hours">23</span>:<span id="minutes">59</span>:<span id="seconds">59</span>
+        </div>
+        
+        <a href="https://pay.hotmart.com/WEBAI-CREATOR" class="btn btn-primary btn-full">🔥 Garantir Minha Vaga Agora</a>
+        
+        <p style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: 0.9rem;">
+          🔒 Pagamento seguro • Acesso vitalício • Nota fiscal inclusa
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIA -->
+  <section class="guarantee">
+    <div class="container">
+      <div class="guarantee-badge">
+        <strong>Garantia Incondicional de 7 Dias</strong>
+      </div>
+      <p>Se você não criar sua primeira página profissional com IA, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Preciso saber programar?</button>
+          <div class="faq-answer">
+            <p>Não! O curso foi criado exatamente para quem não tem experiência com código. Você aprenderá a usar IA para gerar o código e faremos ajustes simples juntos, passo a passo.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Quais ferramentas de IA vou usar?</button>
+          <div class="faq-answer">
+            <p>Trabalhamos com ferramentas gratuitas e acessíveis como ChatGPT, Claude e outras. Ensinamos a escolher a melhor para cada etapa do seu projeto.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">O GitHub Pages é realmente gratuito?</button>
+          <div class="faq-answer">
+            <p>Sim! O GitHub Pages oferece hospedagem gratuita para sites estáticos, com domínio personalizado opcional. Ensinamos todo o processo de configuração.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Por quanto tempo terei acesso?</button>
+          <div class="faq-answer">
+            <p>O acesso é vitalício! Você recebe todas as atualizações do curso e da comunidade sem custo adicional.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">E se eu não gostar do curso?</button>
+          <div class="faq-answer">
+            <p>Você tem 7 dias para testar tudo. Se não estiver 100% satisfeito, basta enviar um e-mail e devolvemos cada centavo. Sem perguntas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Pronto para Criar Sua Primeira Página com IA?</h2>
+      <p>Junte-se a centenas de alunos que já transformaram ideias em páginas web profissionais – sem depender de terceiros, sem mensalidades caras, sem complicação.</p>
+      <a href="https://pay.hotmart.com/WEBAI-CREATOR" class="btn btn-primary">🚀 Quero Começar Agora por R$147</a>
+      <p style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: 0.9rem;">
+        ⏰ Oferta especial por tempo limitado • Garantia de 7 dias
+      </p>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <p><strong>WebAI Creator</strong> © <span id="year"></span> • Todos os direitos reservados</p>
+      <p style="margin-top: var(--spacing-xs);">
+        <a href="#">Termos de Uso</a> • 
+        <a href="#">Política de Privacidade</a> • 
+        <a href="mailto:contato@webaicreator.com">Contato</a>
+      </p>
+      <p style="margin-top: var(--spacing-sm); font-size: 0.85rem; opacity: 0.8;">
+        Este site não é afiliado ao GitHub, OpenAI ou outras empresas mencionadas. Todos os direitos de marcas pertencem aos seus respectivos proprietários.
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS MÍNIMOS -->
+  <script>
+    // Ano automático no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Fecha todos
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Abre o clicado se não estava ativo
+        if (!isActive) item.classList.add('active');
+      });
+    });
+    
+    // Countdown Timer: 23:59:59 que reinicia a cada 24h
+    function updateCountdown() {
+      const now = new Date();
+      const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const msSinceMidnight = now - startOfDay;
+      const msInDay = 24 * 60 * 60 * 1000;
+      const msRemaining = msInDay - msSinceMidnight;
+      
+      const hours = Math.floor(msRemaining / (1000 * 60 * 60));
+      const minutes = Math.floor((msRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((msRemaining % (1000 * 60)) / 1000);
+      
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+  
+  <!-- 
+    ========================================
+    NOTAS PARA EDIÇÃO FUTURA:
+    ========================================
+    • Cores: Edite as variáveis CSS em :root no início do <style>
+    • Links de pagamento: Busque por "pay.hotmart.com" e substitua
+    • Imagens OG/Twitter: Substitua [SUBSTITUIR_PELA_IMAGEM_*.jpg] nos meta tags
+    • Favicon: Edite o SVG no link rel="icon" se desejar outro ícone
+    • Textos: Todos os conteúdos estão inseridos conforme solicitado
+    • Para adicionar imagens reais: Use caminhos relativos como /img/minha-imagem.png
+    ========================================
+  -->
+  
+</body>
+</html>
